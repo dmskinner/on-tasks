@@ -66,7 +66,7 @@ describe('Job.Get.Catalog.Values', function(){
 
         return jobObject.run()
            .then(function(){
-                expect(jobObject.context.data.failCase).to.be.null;
+                expect(jobObject.context.data[2].failCase).to.be.null;
             });
     });
 
@@ -105,10 +105,11 @@ describe('Job.Get.Catalog.Values', function(){
 
         return jobObject.run()
             .then(function() {
-                expect(jobObject.context.data).to.eql({
-                    "cpuCores": "2",
-                    "ip": "1.1.1.1"
-                });
+                expect(jobObject.context.data).to.eql(
+                    [
+                        {cpuCores: "2"},
+                        {ip: "1.1.1.1"}
+                    ]);
             });
     });
 
